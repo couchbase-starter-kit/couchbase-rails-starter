@@ -1,5 +1,13 @@
 name: CI
 
+env:
+  RAILS_ENV: test
+  COUCHBASE_CONNECTIN_STRING: ${{ secrets.COUCHBASE_CONNECTION_STRING }}
+  COUCHBASE_BUCKET: ${{ secrets.COUCHBASE_BUCKET }}
+  COUCHBASE_USER: ${{ secrets.COUCHBASE_USER }}
+  COUCHBASE_PASSWORD: ${{ secrets.COUCHBASE_PASSWORD }}
+  CI: true
+
 on:
   pull_request:
   push:
