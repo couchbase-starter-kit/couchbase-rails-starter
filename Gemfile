@@ -42,7 +42,7 @@ gem 'bootsnap', require: false
 gem 'couchbase', '~> 3.5'
 
 # Use the Couchbase Ruby ORM
-gem 'couchbase-orm', git: 'https://github.com/doctolib/couchbase-orm'
+gem 'couchbase-orm', git: 'https://github.com/hummusonrails/couchbase-orm'
 
 # Use bcrypt for password hashing
 gem 'bcrypt', '~> 3.1.13'
