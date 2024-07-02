@@ -26,6 +26,7 @@ jobs:
           COUCHBASE_BUCKET: ${{ secrets.COUCHBASE_BUCKET }}
           COUCHBASE_USER: ${{ secrets.COUCHBASE_USER }}
           COUCHBASE_PASSWORD: ${{ secrets.COUCHBASE_PASSWORD }}
+          CI: true
         run: |
             gem install bundler
             bundle config path vendor/bundle
