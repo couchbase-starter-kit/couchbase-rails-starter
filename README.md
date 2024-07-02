@@ -1,4 +1,5 @@
-# ![Conduit Starter Kit for Ruby on Rails](conduit_readme_banner.png)
+# ![Conduit Starter Kit for Ruby on Rails](conduit_readme_banner.png#gh-light-mode-only)
+# ![Conduit Starter Kit for Ruby on Rails](conduit_readme_banner_dark_mode.png#gh-dark-mode-only)
 
 ![Test Suite](https://github.com/couchbase-conduit-workshop/rails-starter-kit/actions/workflows/run-tests.yml/badge.svg)
 ![Couchbase Capella](https://img.shields.io/badge/Couchbase_Capella-Enabled-red)
