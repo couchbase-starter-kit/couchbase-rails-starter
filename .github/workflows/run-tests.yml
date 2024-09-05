@@ -22,10 +22,10 @@ jobs:
       - name: Run tests
         env:
           RAILS_ENV: test
-          COUCHBASE_CONNECTION_STRING: ${{ secrets.COUCHBASE_CONNECTION_STRING }}
-          COUCHBASE_BUCKET: ${{ secrets.COUCHBASE_BUCKET }}
-          COUCHBASE_USER: ${{ secrets.COUCHBASE_USER }}
-          COUCHBASE_PASSWORD: ${{ secrets.COUCHBASE_PASSWORD }}
+          RAILS_COUCHBASE_CONNECTION_STRING: ${{ secrets.COUCHBASE_CONNECTION_STRING }}
+          COUCHBASE_DEFAULT_BUCKET: ${{ secrets.COUCHBASE_DEFAULT_BUCKET }}
+          RAILS_COUCHBASE_USERNAME: ${{ secrets.COUCHBASE_USERNAME }}
+          RAILS_COUCHBASE_PASSWORD: ${{ secrets.COUCHBASE_PASSWORD }}
         run: |
             gem install bundler
             bundle config path vendor/bundle

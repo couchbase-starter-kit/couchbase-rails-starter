@@ -5,16 +5,16 @@ require 'couchbase'
 RSpec.describe 'Couchbase Configuration', type: :request do
   around do |example|
     original_env = {
-      'COUCHBASE_CONNECTION_STRING' => ENV['COUCHBASE_CONNECTION_STRING'],
-      'COUCHBASE_USER' => ENV['COUCHBASE_USER'],
-      'COUCHBASE_PASSWORD' => ENV['COUCHBASE_PASSWORD'],
-      'COUCHBASE_BUCKET' => ENV['COUCHBASE_BUCKET']
+      'RAILS_COUCHBASE_CONNECTION_STRING' => ENV['RAILS_COUCHBASE_CONNECTION_STRING'],
+      'RAILS_COUCHBASE_USERNAME' => ENV['RAILS_COUCHBASE_USERNAME'],
+      'RAILS_COUCHBASE_PASSWORD' => ENV['RAILS_COUCHBASE_PASSWORD'],
+      'COUCHBASE_DEFAULT_BUCKET' => ENV['COUCHBASE_DEFAULT_BUCKET']
     }
 
-    ENV['COUCHBASE_CONNECTION_STRING'] = 'couchbase://localhost'
-    ENV['COUCHBASE_USER'] = 'user'
-    ENV['COUCHBASE_PASSWORD'] = 'password'
-    ENV['COUCHBASE_BUCKET'] = 'bucket'
+    ENV['RAILS_COUCHBASE_CONNECTION_STRING'] = 'couchbase://localhost'
+    ENV['RAILS_COUCHBASE_USERNAME'] = 'user'
+    ENV['RAILS_COUCHBASE_PASSWORD'] = 'password'
+    ENV['COUCHBASE_DEFAULT_BUCKET'] = 'bucket'
 
     example.run
 
@@ -23,10 +23,10 @@ RSpec.describe 'Couchbase Configuration', type: :request do
 
   let(:config) do
     {
-      connection_string: ENV.fetch('COUCHBASE_CONNECTION_STRING'),
-      username: ENV.fetch('COUCHBASE_USER'),
-      password: ENV.fetch('COUCHBASE_PASSWORD'),
-      bucket: ENV.fetch('COUCHBASE_BUCKET')
+      connection_string: ENV.fetch('RAILS_COUCHBASE_CONNECTION_STRING'),
+      username: ENV.fetch('RAILS_COUCHBASE_USERNAME'),
+      password: ENV.fetch('RAILS_COUCHBASE_PASSWORD'),
+      bucket: ENV.fetch('COUCHBASE_DEFAULT_BUCKET')
     }
   end
 

@@ -1,30 +1,28 @@
-# ![Conduit Starter Kit for Ruby on Rails](conduit_readme_banner.png)
+# Couchbase Rails Starter Kit
 
-![Test Suite](https://github.com/couchbase-conduit-workshop/rails-starter-kit/actions/workflows/run-tests.yml/badge.svg)
+![Test Suite](https://github.com/couchbase-conduit-workshop/couchbase-rails-starter/actions/workflows/run-tests.yml/badge.svg)
 ![Couchbase Capella](https://img.shields.io/badge/Couchbase_Capella-Enabled-red)
 [![License: MIT](https://cdn.prod.website-files.com/5e0f1144930a8bc8aace526c/65dd9eb5aaca434fac4f1c34_License-MIT-blue.svg)](/LICENSE)
 ![Static Badge](https://img.shields.io/badge/Code_of_Conduct-Contributor_Covenant-violet.svg)
 
-> ### Conduit Starter Kit for Ruby on Rails
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/couchbase-starter-kit/couchbase-spring-starter)
 
-## What is Conduit?
+## Configuration
 
-See how the *exact* same Medium.com clone (called Conduit) is built using any of our supported frontends and backends. Yes, you can mix and match them, because they all adhere to the same [API spec](https://realworld-docs.netlify.app/docs/specs/backend-specs/introduction). 😮😎
+| Variable Name                      | Description                                                 |      Default value       |
+|:-----------------------------------|:------------------------------------------------------------|:------------------------:|
+| RAILS_COUCHBASE_CONNECTION_STRING  | A couchbase connection string                               |            -             |
+| RAILS_COUCHBASE_USERNAME           | Username for authentication with Couchbase                  |            -             |
+| RAILS_COUCHBASE_PASSWORD           | Password for authentication with Couchbase                  |            -             |
+| COUCHBASE_USE_CAPELLA              | Use to change the connection profile                        |          false           |
+| COUCHBASE_DEFAULT_BUCKET           | The name of the Couchbase Bucket, parent of the scope       |         default          |
+| COUCHBASE_DEFAULT_SCOPE            | The name of the Couchbase scope, parent of the collection   |         _default         |
+| COUCHBASE_DEFAULT_COLLECTION       | The name of the Couchbase collection to store the Documents |         _default         |
 
-While most "todo" demos provide an excellent cursory glance at a framework's capabilities, they typically don't convey the knowledge & perspective required to actually build _real_ applications with it.
-
-**Conduit** solves this by allowing you to choose any frontend (React, Angular, & more) and any backend (Node, Django, & more) and see how they power a real-world, beautifully designed full-stack app called [**Conduit**](https://conduit.realworld.how).
-
-This starter kit has everything you need to get started with Conduit using Ruby on Rails and Couchbase. It includes:
-
-- A preconfigured Couchbase connection, all you need to do is provide your credentials.
-- The beginning of an RSpec test suite to ensure your application is working as expected.
-
-### [Demo](https://demo.realworld.io/)&nbsp;&nbsp;&nbsp;&nbsp;[Conduit](https://github.com/gothinkster/realworld)
 
 ### Getting started
 
-Follow these steps to get the Conduit Ruby on Rails starter kit up and running on your local machine.
+Follow these steps to get the starter kit up and running on your local machine.
 
 **Prerequisites**
 
@@ -40,8 +38,8 @@ You will also need an account on Couchbase Capella to create a cluster and obtai
 **Clone the repository**
 
 ```bash
-git clone https://github.com/couchbase-conduit-workshop/rails-starter-kit.git
-cd rails-starter-kit
+git clone https://github.com/couchbase-conduit-workshop/couchbase-rails-starter.git
+cd couchbase-rails-starter
 ```
 
 **Install dependencies**
@@ -55,15 +53,15 @@ bundle install
 Copy the `.env.sample` file in the root directory of the project and rename it to `.env`. Update the `.env` file with your Couchbase credentials as follows:
 
 ```bash
-COUCHBASE_USER=your_COUCHBASE_USER
-COUCHBASE_PASSWORD=your_couchbase_password
-COUCHBASE_CONNECTION_STRING=your_couchbase_connection_string_url
-COUCHBASE_BUCKET=your_couchbase_bucket
+RAILS_COUCHBASE_USERNAME=your_RAILS_COUCHBASE_USERNAME
+RAILS_COUCHBASE_PASSWORD=your_RAILS_COUCHBASE_PASSWORD
+RAILS_COUCHBASE_CONNECTION_STRING=your_RAILS_COUCHBASE_CONNECTION_STRING_url
+COUCHBASE_DEFAULT_BUCKET=your_COUCHBASE_DEFAULT_BUCKET
 ```
 
-You can obtain those credentials by first creating an account on Couchbase Capella at [https://cloud.couchbase.com/](https://cloud.couchbase.com/) and then creating a database called `Conduit_Rails_App`. Inside the database, create a bucket. The name of the bucket is what you should use for the `COUCHBASE_BUCKET` environment variable.
+You can obtain those credentials by first creating an account on Couchbase Capella at [https://cloud.couchbase.com/](https://cloud.couchbase.com/) and then creating a database called `rails_starter_app`. Inside the database, create a bucket. The name of the bucket is what you should use for the `COUCHBASE_DEFAULT_BUCKET` environment variable.
 
-Once you have done so, you can navigate to the `Connect` tab in the database and copy the connection string URL. This is what you should use for the `COUCHBASE_CONNECTION_STRING` environment variable. You will also need to create a user with the appropriate permissions and use the username and password for the `COUCHBASE_USER` and `COUCHBASE_PASSWORD` environment variables.
+Once you have done so, you can navigate to the `Connect` tab in the database and copy the connection string URL. This is what you should use for the `RAILS_COUCHBASE_CONNECTION_STRING` environment variable. You will also need to create a user with the appropriate permissions and use the username and password for the `RAILS_COUCHBASE_USERNAME` and `RAILS_COUCHBASE_PASSWORD` environment variables.
 
 **Running the Test Suite**
 
