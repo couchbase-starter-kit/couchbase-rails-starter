@@ -1,0 +1,95 @@
+{
+    "name": "Couchbase Ruby Workspace",
+    "image": "laurentdoguin/workspace-couchbase-ruby-3",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "couchbase.vscode-couchbase",
+                "Shopify.ruby-lsp",
+                "Shopify.ruby-extensions-pack",
+                "hridoy.rails-snippets"
+            ]
+        }
+    },
+    "runArgs": [
+        "--cap-add=SYS_PTRACE",
+        "--security-opt",
+        "seccomp=unconfined"
+    ],
+    "portsAttributes": {
+        "8080": {
+            "label": "Application",
+            "onAutoForward": "openBrowser"
+        },
+        "8091": {
+            "label": "Couchbase Web Console",
+            "onAutoForward": "openBrowser",
+            "visibility": "public"
+        },
+        "8092": {
+            "label": "Views, Queries, XDCR",
+            "onAutoForward": "ignore"
+        },
+        "8093": {
+            "label": "Query Services",
+            "onAutoForward": "ignore"
+        },
+        "8094": {
+            "label": "Full-text Search",
+            "onAutoForward": "ignore"
+        },
+        "8095": {
+            "label": "Analytics",
+            "onAutoForward": "ignore"
+        },
+        "8096": {
+            "label": "Eventing",
+            "onAutoForward": "ignore"
+        },
+        "11207": {
+            "label": "SSL Smart Client Library Access",
+            "onAutoForward": "ignore"
+        },
+        "11210": {
+            "label": "Smart Client Library/Moxi Access",
+            "onAutoForward": "ignore"
+        },
+        "11211": {
+            "label": "Legacy Non-smart Client Library Access",
+            "onAutoForward": "ignore"
+        },
+        "18091": {
+            "label": "SSL Couchbase Web Console",
+            "onAutoForward": "ignore"
+        },
+        "18092": {
+            "label": "SSL Views, Queries, XDCR",
+            "onAutoForward": "ignore"
+        },
+        "18093": {
+            "label": "SSL Query Services",
+            "onAutoForward": "ignore"
+        },
+        "18094": {
+            "label": "SSL Full-text Search",
+            "onAutoForward": "ignore"
+        },
+        "18095": {
+            "label": "SSL Analytics",
+            "onAutoForward": "ignore"
+        },
+        "18096": {
+            "label": "SSL Eventing",
+            "onAutoForward": "ignore"
+        }
+    },
+    "postCreateCommand": [
+        "source ./scripts/setLocalEnv && eval $(printenv)",
+        "bundle install"
+    ],
+    "postStartCommand": [
+        "docker run -d --name couchbase-server -p 8091-8096:8091-8096 -p 11210-11211:11210-11211 -p 18091-18096:18091-18096 couchbase:latest",
+        "sleep 15",
+        "cbsh -c 'source ./scripts/dbSetup.nu; dbSetup $COUCHBASE_DEFAULT_BUCKET $COUCHBASE_DEFAULT_SCOPE $COUCHBASE_DEFAULT_COLLECTION'"
+    ]
+}
