@@ -1,6 +1,6 @@
 # Couchbase Rails Starter Kit
 
-![Test Suite](https://github.com/couchbase-conduit-workshop/couchbase-rails-starter/actions/workflows/run-tests.yml/badge.svg)
+![Test Suite](https://github.com/couchbase-starter-kit/couchbase-rails-starter/actions/workflows/run-tests.yml/badge.svg)
 ![Couchbase Capella](https://img.shields.io/badge/Couchbase_Capella-Enabled-red)
 [![License: MIT](https://cdn.prod.website-files.com/5e0f1144930a8bc8aace526c/65dd9eb5aaca434fac4f1c34_License-MIT-blue.svg)](/LICENSE)
 ![Static Badge](https://img.shields.io/badge/Code_of_Conduct-Contributor_Covenant-violet.svg)
