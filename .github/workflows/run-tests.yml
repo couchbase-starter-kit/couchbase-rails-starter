@@ -23,7 +23,7 @@ jobs:
         env:
           RAILS_ENV: test
           RAILS_COUCHBASE_CONNECTION_STRING: ${{ secrets.COUCHBASE_CONNECTION_STRING }}
-          COUCHBASE_DEFAULT_BUCKET: ${{ secrets.COUCHBASE_DEFAULT_BUCKET }}
+          COUCHBASE_DEFAULT_BUCKET: ${{ vars.COUCHBASE_DEFAULT_COLLECTION || '_default' }}
           RAILS_COUCHBASE_USERNAME: ${{ secrets.COUCHBASE_USERNAME }}
           RAILS_COUCHBASE_PASSWORD: ${{ secrets.COUCHBASE_PASSWORD }}
         run: |
