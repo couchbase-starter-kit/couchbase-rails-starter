@@ -1,7 +1,6 @@
 {
     "name": "Couchbase Ruby Workspace",
     "image": "laurentdoguin/workspace-couchbase-ruby-3",
-    "postCreateCommand": "bundle install",
     "customizations": {
         "vscode": {
             "extensions": [
@@ -84,7 +83,13 @@
             "onAutoForward": "ignore"
         }
     },
-    "initializeCommand": "sudo /entrypoint.sh couchbase-server",
-    "onCreateCommand": "source ./scripts/setLocalEnv && eval $(printenv)",
-    "postStartCommand": "cbsh -c 'source ./scripts/dbSetup.nu; dbSetup $COUCHBASE_DEFAULT_BUCKET $COUCHBASE_DEFAULT_SCOPE $COUCHBASE_DEFAULT_COLLECTION'"
+    "postCreateCommand": [
+        "source ./scripts/setLocalEnv && eval $(printenv)",
+        "bundle install"
+    ],
+    "postStartCommand": [
+        "docker run -d --name couchbase-server -p 8091-8096:8091-8096 -p 11210-11211:11210-11211 -p 18091-18096:18091-18096 couchbase:latest",
+        "sleep 15",
+        "cbsh -c 'source ./scripts/dbSetup.nu; dbSetup $COUCHBASE_DEFAULT_BUCKET $COUCHBASE_DEFAULT_SCOPE $COUCHBASE_DEFAULT_COLLECTION'"
+    ]
 }
