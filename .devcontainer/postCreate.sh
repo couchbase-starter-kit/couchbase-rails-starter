@@ -31,5 +31,9 @@ echo "Installing Couchbase..."
 echo "Starting Couchbase server..."
 ./cb-install/opt/couchbase/bin/couchbase-server --start
 
+# Set up the Couchbase cluster
+"source ./scripts/setLocalEnv && eval $(printenv)"
+cbsh -c 'source ./scripts/dbSetup.nu; dbSetup $env.COUCHBASE_DEFAULT_BUCKET $env.COUCHBASE_DEFAULT_SCOPE $env.COUCHBASE_DEFAULT_COLLECTION'
+
 # Print confirmation
 echo "Couchbase installation and setup completed."
