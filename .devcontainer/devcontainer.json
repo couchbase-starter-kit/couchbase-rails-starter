@@ -99,20 +99,7 @@
             "visibility": "public"
         }
     },
-    "postCreateCommand": [
-        "source ./scripts/setLocalEnv && eval $(printenv)",
-        "bundle install",
-        "SOURCE_SOCKET=${2:-\"/var/run/docker-host.sock\"}",
-        "TARGET_SOCKET=${3:-\"/var/run/docker.sock\"}",
-        "sudo touch \"${SOURCE_SOCKET}\"",
-        "sudo ln -s \"${SOURCE_SOCKET}\" \"${TARGET_SOCKET}\"",
-        "wget https://packages.couchbase.com/cb-non-package-installer/cb-non-package-installer-x86_64",
-        "chmod u+x ./cb-non-package-installer-x86_64",
-        "mkdir ./cb-install",
-        "wget https://packages.couchbase.com/releases/7.6.2/couchbase-server-community_7.6.2-linux_amd64.deb",
-        "./cb-non-package-installer-x86_64 --install --install-location ./cb-install --package ./couchbase-server-community_7.6.2-linux_amd64.deb",
-        "./cb-install/opt/couchbase/bin/couchbase-server --start"
-    ],
+    "postCreateCommand": "bash .devcontainer/postCreate.sh",
     "postStartCommand": [
         "docker run -d --name couchbase-server -p 8091-8096:8091-8096 -p 11210-11211:11210-11211 -p 18091-18096:18091-18096 couchbase:latest",
         "sleep 15",
