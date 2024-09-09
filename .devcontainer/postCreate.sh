@@ -37,12 +37,5 @@ wget https://packages.couchbase.com/releases/7.6.2/couchbase-server-community_7.
 echo "Installing Couchbase..."
 ./cb-non-package-installer-x86_64 --install --install-location ./cb-install --package ./couchbase-server-community_7.6.2-linux_amd64.deb
 
-# Start Couchbase server
-echo "Starting Couchbase server..."
-./cb-install/opt/couchbase/bin/couchbase-server --start
-
-# Set up the Couchbase cluster
-cbsh -c 'source ./scripts/dbSetup.nu; dbSetup $env.COUCHBASE_DEFAULT_BUCKET $env.COUCHBASE_DEFAULT_SCOPE $env.COUCHBASE_DEFAULT_COLLECTION'
-
 # Print confirmation
 echo "Couchbase installation and setup completed."

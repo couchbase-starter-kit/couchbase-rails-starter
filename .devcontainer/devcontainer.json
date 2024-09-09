@@ -100,7 +100,5 @@
         }
     },
     "postCreateCommand": "bash .devcontainer/postCreate.sh",
-    "postStartCommand": [
-        "cbsh -c 'source ./scripts/dbSetup.nu; dbSetup $env.COUCHBASE_DEFAULT_BUCKET $env.COUCHBASE_DEFAULT_SCOPE $env.COUCHBASE_DEFAULT_COLLECTION'"
-    ]
+    "postStartCommand": "bash .devcontainer/postStart.sh"
 }
