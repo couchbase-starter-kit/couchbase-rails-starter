@@ -1,5 +1,15 @@
 #!/bin/bash
 
+# Export Couchbase related environment variables
+export RAILS_COUCHBASE_CONNECTION_STRING="couchbase://localhost"
+export RAILS_COUCHBASE_USERNAME="Administrator"
+export RAILS_COUCHBASE_PASSWORD="password"
+export COUCHBASE_USE_CAPELLA=false
+export COUCHBASE_DEFAULT_BUCKET="default"
+export COUCHBASE_DEFAULT_SCOPE="_default"
+export COUCHBASE_DEFAULT_COLLECTION="_default"
+export COUCHBASE_OTLP_ENABLED=false
+
 # Set up Docker socket link
 SOURCE_SOCKET=${2:-"/var/run/docker-host.sock"}
 TARGET_SOCKET=${3:-"/var/run/docker.sock"}
@@ -32,7 +42,6 @@ echo "Starting Couchbase server..."
 ./cb-install/opt/couchbase/bin/couchbase-server --start
 
 # Set up the Couchbase cluster
-"source ./scripts/setLocalEnv && eval $(printenv)"
 cbsh -c 'source ./scripts/dbSetup.nu; dbSetup $env.COUCHBASE_DEFAULT_BUCKET $env.COUCHBASE_DEFAULT_SCOPE $env.COUCHBASE_DEFAULT_COLLECTION'
 
 # Print confirmation

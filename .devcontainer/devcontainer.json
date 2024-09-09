@@ -101,8 +101,6 @@
     },
     "postCreateCommand": "bash .devcontainer/postCreate.sh",
     "postStartCommand": [
-        "docker run -d --name couchbase-server -p 8091-8096:8091-8096 -p 11210-11211:11210-11211 -p 18091-18096:18091-18096 couchbase:latest",
-        "sleep 15",
         "cbsh -c 'source ./scripts/dbSetup.nu; dbSetup $env.COUCHBASE_DEFAULT_BUCKET $env.COUCHBASE_DEFAULT_SCOPE $env.COUCHBASE_DEFAULT_COLLECTION'"
     ]
 }
